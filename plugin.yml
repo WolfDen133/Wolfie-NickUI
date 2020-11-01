@@ -1,0 +1,18 @@
+---
+name: Wolfies-NickUI
+version: 1.5.0
+main: WolfDen133\Wolfies_NickUI\Main
+description: A simple and easy to use NickUI plugin!
+api: 3.0.0
+depend: FormAPI
+
+commands:
+  nick:
+    description: Opens the NickUI!
+    usage: "/nick"
+    permission: nick.use
+permissions:
+  nick.use:
+    description: Allows you to use /nick!
+    default: true
+...
