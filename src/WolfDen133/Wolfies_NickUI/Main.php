@@ -83,7 +83,7 @@ class main extends PluginBase implements Listener {
 		});
 		$form->setTitle("§l§bNickUI");
 		$dname = $player->getDisplayName();
-		$form->setContent("§eWelcome to InfoUI!\n§eCurrent name §9" . $dname . "§e!");
+		$form->setContent("§eWelcome to NickUI!\n§eCurrent name §9" . $dname . "§e!");
 		$form->addButton("§l§aSet\n§r§eSet you nick in a UI!", 0, "textures/ui/icon_setting");
 		$form->addButton("§l§3Reset \n§r§eReset you nick with 1 button!", 0, "textures/ui/refresh_light");
 		$form->addButton("§cClose", 0, "textures/ui/realms_red_x");
