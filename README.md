@@ -6,3 +6,5 @@ You can change peoples nicks in Player.yml
 Commands: /nick
 
 Permissions: nick.use
+
+Dependency: FormAPI
