@@ -13,6 +13,9 @@ use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 
+use jojoe77777\FormAPI\CustomForm;
+use jojoe77777\FormAPI\SimpleForm;
+
 use pocketmine\event\Listener;
 
 use pocketmine\utils\Config;
