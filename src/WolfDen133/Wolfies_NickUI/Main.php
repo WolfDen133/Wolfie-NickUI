@@ -41,22 +41,41 @@ class main extends PluginBase implements Listener {
     }
 
 
-	public function onCommand(CommandSender $sender, Command $cmd, String $label, Array $args) : bool {
+    public function onCommand(CommandSender $sender, Command $cmd, String $label, Array $args) : bool {
 
-		switch($cmd->getName()){
-			case "nick":
-			if($sender instanceof Player){
-                if($sender->hasPermission("nick.use")){
-					$this->openNickUI($sender);
-				} else {
-					$sender->sendMessage("§cYou do not have permission to execute this command!");
-				}
-			} else {
-				$sender->sendMessage("§cPlease use this command in-game!");
-			}
-		}
-	return true;
-	}
+        switch($cmd->getName()){
+            case "nick":
+                if($sender instanceof Player){
+                    if($sender->isOp()){
+                        if (isset($args[0]) && isset($args[1])){
+                            if ($args[0] === "find") {
+                                $players = array();
+                                foreach ($this->getServer()->getOnlinePlayers() as $player) {
+                                    if ($player->getDisplayName() === $args[1]) {
+                                        $players[$player->getName()] = $player->getName();
+                                    }
+                                }
+                                if (count($players) === 0) $sender->sendMessage("§a> No people have the nick $args[1]");
+                                else $sender->sendMessage("§a> " . implode(",", $players) . " have the nick $args[1]");
+                            } else {
+                                $this->openNickUI($sender);
+                            }
+                        } else {
+                            $this->openNickUI($sender);
+                        }
+                    } elseif($sender->hasPermission("nick.use")) {
+                        $this->openNickUI($sender);
+                    } else{
+                        $sender->sendMessage("§cYou do not have permission to execute this command!");
+                    }
+                } else {
+                    $sender->sendMessage("§cPlease use this command in-game!");
+                }
+                break;
+        }
+        return true;
+    }
+	
 	public function openNickUI($player){
 		$api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
 		$form = $api->createSimpleForm(function (Player $player, int $data = null){
